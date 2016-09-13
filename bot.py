@@ -82,12 +82,20 @@ def on_message(message):
             #bool for keeping track of if the author is a mod.
             isMod = False
 
+            #bool for keeping track of if the author is a backer
+            isBacker = False
+
             for role in message.author.roles:
                 if role.id in settings.modRoles:
                     isMod = True
+                if role.id in settings.backerRoles:
+                    isBacker = True
+
 
             if isMod:
                 #Mod only commands
+
+                #giveaway
                 if message.channel.id in settings.giveawayChannels and command[0] == giveaway.call:
 
                     if len(command) < 2:
@@ -102,6 +110,7 @@ def on_message(message):
                     yield from client.change_nickname(message.server.get_member(bullyGiant.giantId), bullyGiant.gen(message))
                     yield from client.delete_message(message)
 
+                #Poll
                 elif command[0] == __help.pollHelp.call:
 
                     if len(command) < 4:
@@ -119,6 +128,9 @@ def on_message(message):
 
                         botTalk = yield from client.send_message(message.channel, "Poll sucessfully created\nLink: http://www.strawpoll.me/{0}".format(strawpoll.json()['id']))
 
+            #backer commands
+            if isBacker:
+                print("backer")
 
             #@everyone commands.
             if message.content.startswith(settings.operator):

@@ -1,5 +1,7 @@
 modRoles = ["222359639575101442"] #The id of the mod role(s). Can be found by typing "\@MOD-ROLE-MENTION"
 
+backerRoles = ["225042074775322624"]
+
 forbiddenChannels = ["220502476850200595","222739924313440257"] #Channel id(s) for channels the bot is wanted in. Ids can be found by typing "\#forbidden-channel"
 
 #What you use to trigger a command (EG: !help OR /help)
