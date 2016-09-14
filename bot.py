@@ -132,6 +132,12 @@ def on_message(message):
             if isBacker:
                 print("backer")
 
+                if command[0] == __help.hug.call:
+                    botTalk = yield from client.send_message(message.channel, str(message.author.mention) + " :heart: " + str(command[1]))
+                    yield from client.delete_message(message)
+                    yield from asyncio.sleep(10)
+                    yield from client.delete_message(botTalk)
+
             #@everyone commands.
             if message.content.startswith(settings.operator):
 
