@@ -1,7 +1,7 @@
-import discord, asyncio, logging, random, time, requests, json
+import discord, asyncio, logging, random, time, requests, json, math
 
 import settings, autoresponses
-from commands import __time, joke, youtube, __help, roll, bullyGiant, poll
+from commands import __time, joke, youtube, __help, roll, bullyGiant, poll, fight
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
@@ -130,13 +130,38 @@ def on_message(message):
 
             #backer commands
             if isBacker:
-                print("backer")
-
                 if command[0] == __help.hug.call:
                     botTalk = yield from client.send_message(message.channel, str(message.author.mention) + " :heart: " + str(command[1]))
                     yield from client.delete_message(message)
                     yield from asyncio.sleep(10)
                     yield from client.delete_message(botTalk)
+
+                if command[0] == "fight":
+
+                    if len(command) < 2 or len(command) > 3:
+                        botTalk = yield from client.send_message(message.channel, "Get your arguments straight, you fuck head :crossed_swords: ")
+
+                    else:
+                        player1, player2 = 100, 100
+
+                        while player1 > 0 and player2 > 0:
+                            damage1 = fight.rollDamage(10)
+                            damage2 = fight.rollDamage(10)
+                            player1 -= math.ceil(damage1)
+                            player2 -= math.ceil(damage2)
+                            botTalk = yield from client.send_message(message.channel, "{0} :crossed_swords: {1}\n{0} has taken {2} damage\n{1} has taken {3} damage".format(str(message.author.mention), str(command[1]), damage1, damage2))
+                            print(player1, player2)
+                            yield from asyncio.sleep(4)
+                            yield from client.delete_message(botTalk)
+
+
+                        if player1 < player2:
+                            botTalk = yield from client.send_message(message.channel, "{0} lost the fight against {1}".format(str(message.author.mention), str(command[1])))
+                        else:
+                            botTalk = yield from client.send_message(message.channel, "{0} lost the fight against {1}".format(str(command[1]), str(message.author.mention)))
+
+                            yield from asyncio.sleep(10)
+                            yield from client.delete_message(botTalk)
 
             #@everyone commands.
             if message.content.startswith(settings.operator):
