@@ -13,7 +13,7 @@ Todo:
 --
 *Italics* are simple text commands.
 - [x] Add question handling
-- [ ] Add polls
+- [x] Add polls
 - [ ] Add giveaways
 - [x] /help
 - [x] */rules*
@@ -29,6 +29,6 @@ Todo:
 - [x] */facebook*
 - [x] */reddit*
 - [x] /roll DiceSides
-- [ ] /fight PlayerName
-- [ ] /hug @Username
+- [x] /fight PlayerName
+- [x] /hug @Username
 - [x] /help **command**
