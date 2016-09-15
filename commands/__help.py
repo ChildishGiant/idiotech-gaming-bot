@@ -46,13 +46,25 @@ class hug():
     #base call
     call = "hug"
     #Help text
-    helpText = "`!hug @username`"
+    helpText = "`{}hug @username`".format(settings.operator)
 
 class pollHelp():
     #base call
     call = "poll"
     #help text
     helpText = "You need to have at least 3 arguments to use poll, the title and at least 2 options\nEG: `{}poll title; option 1; option 2`\nYou can set up to 10 options".format(settings.operator)
+
+class fightHelp():
+    #base call
+    call = "fight"
+    #help text
+    helpText = "filler"
+
+class purgeHelp():
+    #base call
+    call = "purge"
+    #help text
+    helpText = "`{}purge number` Deletes that many mesages above it.".format(settings.operator)
 
 moduleLookup = {
     helpHelp.call : helpHelp,
@@ -63,7 +75,8 @@ moduleLookup = {
     giveawayHelp.call : giveawayHelp,
     bullyGiantHelp.call : bullyGiantHelp,
     pollHelp.call : pollHelp,
-    hug.call : hug
+    hug.call : hug,
+    purgeHelp.call : purgeHelp
 }
 
 #Please supply a string when using this EG( __help.getHelp("roll") )

@@ -95,6 +95,13 @@ def on_message(message):
             if isMod:
                 #Mod only commands
 
+                if command[0] == __help.purgeHelp.call:
+                    yield from client.delete_message(message)
+                    try:
+                        yield from client.purge_from(message.channel, limit = int(command[1]))
+                    except IndexError:
+                        yield from client.send_message(message.channel, __help.purgeHelp.helpText)
+
                 #giveaway
                 if message.channel.id in settings.giveawayChannels and command[0] == giveaway.call:
 
