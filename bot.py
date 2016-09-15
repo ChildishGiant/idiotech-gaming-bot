@@ -1,7 +1,7 @@
 import discord, asyncio, logging, random, time, requests, json, math
 
 import settings, autoresponses
-from commands import __time, joke, youtube, __help, roll, bullyGiant, poll, fight
+from commands import __time, joke, youtube, __help, roll, bullyGiant, poll, fight, giveaways
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
