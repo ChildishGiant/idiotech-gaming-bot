@@ -66,6 +66,12 @@ class purgeHelp():
     #help text
     helpText = "`{}purge number` Deletes that many mesages above it.".format(settings.operator)
 
+class burnHelp():
+    #base call
+    call = "burn"
+    #help text
+    helpText = "`{}burn` Sick burn, bro".format(settings.operator)
+
 moduleLookup = {
     helpHelp.call : helpHelp,
     rollHelp.call : rollHelp,
@@ -76,7 +82,8 @@ moduleLookup = {
     bullyGiantHelp.call : bullyGiantHelp,
     pollHelp.call : pollHelp,
     hug.call : hug,
-    purgeHelp.call : purgeHelp
+    purgeHelp.call : purgeHelp,
+    burnHelp.call : burnHelp,
 }
 
 #Please supply a string when using this EG( __help.getHelp("roll") )

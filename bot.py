@@ -1,7 +1,7 @@
 import discord, asyncio, logging, random, time, requests, json, math
 
 import settings, autoresponses
-from commands import __time, joke, youtube, __help, roll, bullyGiant, poll, fight, giveaways
+from commands import __time, joke, youtube, __help, roll, bullyGiant, poll, fight, giveaways, burn
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
@@ -143,6 +143,10 @@ def on_message(message):
                     yield from asyncio.sleep(10)
                     yield from client.delete_message(botTalk)
 
+                if command[0] == __help.burnHelp.call:
+                    yield from client.delete_message(message)
+                    yield from client.send_message(message.channel, burn.getBurn())
+
                 if command[0] == "fight":
 
                     if len(command) < 2 or len(command) > 3:
@@ -169,6 +173,7 @@ def on_message(message):
 
                             yield from asyncio.sleep(10)
                             yield from client.delete_message(botTalk)
+
 
             #@everyone commands.
             if message.content.startswith(settings.operator):
