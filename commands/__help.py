@@ -46,7 +46,7 @@ class hug():
     #base call
     call = "hug"
     #Help text
-    helpText = "`{}hug @username`".format(settings.operator)
+    helpText = "`{}hug @username` Hugs that user. ".format(settings.operator)
 
 class pollHelp():
     #base call

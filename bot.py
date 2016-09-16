@@ -138,7 +138,11 @@ def on_message(message):
             #backer commands
             if isBacker:
                 if command[0] == __help.hug.call:
-                    botTalk = yield from client.send_message(message.channel, str(message.author.mention) + " :heart: " + str(command[1]))
+                    try:
+                        botTalk = yield from client.send_message(message.channel, str(message.author.mention) + " :heart: " + str(command[1]))
+                    except IndexError:
+                        botTalk = yield from client.send_message(message.channel, __help.hug.helpText)
+
                     yield from client.delete_message(message)
                     yield from asyncio.sleep(10)
                     yield from client.delete_message(botTalk)
