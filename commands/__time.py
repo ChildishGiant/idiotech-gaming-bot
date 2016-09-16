@@ -26,7 +26,7 @@ def getTimezone(loc):
     loc = loc.lower()
 
     #Standard timezone format
-    for zone in pytz.common_timezones:
+    for zone in pytz.all_timezones:
         places[zone.lower()] = zone
 
 
