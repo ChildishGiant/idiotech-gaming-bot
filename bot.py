@@ -70,12 +70,13 @@ def on_message(message):
         #Checks for a command
         if message.content.startswith(settings.operator):
 
+            yield from client.delete_message(message)
+
             #The command without the operator EG: giveaway start
             command = message.content.lower().lstrip(settings.operator).split()
             #If the message is just the operator / a few operators
             if len(command) < 1:
                 botTalk = yield from client.send_message(message.channel, settings.helpText)
-                yield from client.delete_message(message)
                 yield from asyncio.sleep(10); yield from client.delete_message(botTalk)
                 return
 
@@ -96,26 +97,13 @@ def on_message(message):
                 #Mod only commands
 
                 if command[0] == __help.purgeHelp.call:
-                    yield from client.delete_message(message)
                     try:
                         yield from client.purge_from(message.channel, limit = int(command[1]))
                     except IndexError:
                         yield from client.send_message(message.channel, __help.purgeHelp.helpText)
 
-                #giveaway
-                if message.channel.id in settings.giveawayChannels and command[0] == giveaway.call:
-
-                    if len(command) < 2:
-
-                        if command[1] == "start":
-                            print("start")
-
-                        elif command[1] == "stop":
-                            print("Stop")
-
                 elif command[0] == __help.bullyGiantHelp.call:
                     yield from client.change_nickname(message.server.get_member(bullyGiant.giantId), bullyGiant.gen(message))
-                    yield from client.delete_message(message)
 
                 #Poll
                 elif command[0] == __help.pollHelp.call:
@@ -143,12 +131,10 @@ def on_message(message):
                     except IndexError:
                         botTalk = yield from client.send_message(message.channel, __help.hug.helpText)
 
-                    yield from client.delete_message(message)
                     yield from asyncio.sleep(10)
                     yield from client.delete_message(botTalk)
 
                 if command[0] == __help.burnHelp.call:
-                    yield from client.delete_message(message)
                     yield from client.send_message(message.channel, burn.getBurn())
 
                 if command[0] == "fight":
@@ -194,16 +180,13 @@ def on_message(message):
                     else:
                         botTalk = yield from client.send_message(message.channel, __time.getTime())
 
-                    yield from client.delete_message(message)
                     yield from asyncio.sleep(10); yield from client.delete_message(botTalk)
 
                 elif command[0] == __help.jokeHelp.call:
                     yield from client.send_message(message.channel, joke.getJoke())
-                    yield from client.delete_message(message)
 
                 elif command[0] == __help.youtubeHelp.call:
                     botTalk = yield from client.send_message(message.channel, youtube._youtube())
-                    yield from client.delete_message(message)
                     yield from asyncio.sleep(10); yield from client.delete_message(botTalk)
 
                 elif command[0] == __help.helpHelp.call:
@@ -212,7 +195,6 @@ def on_message(message):
                     else:
                         botTalk = yield from client.send_message(message.channel, __help.getHelp(command[1]))
 
-                    yield from client.delete_message(message)
                     yield from asyncio.sleep(10); yield from client.delete_message(botTalk)
 
                 elif command[0] == __help.rollHelp.call:
@@ -225,12 +207,27 @@ def on_message(message):
                     else:
                         yield from client.send_message(message.channel, roll.roll(command[1]))
 
-                    yield from client.delete_message(message)
+                elif message.channel.id in settings.giveawayChannels and command[0] == __help.giveawayHelp.call:
+                    if len(command) > 2:
+
+                        if isMod:
+                            if command[1] == "start":
+                                back = giveaways.start(command[2], message.author)
+                                if back != None:
+                                    yield from client.send_message(message.channel, back)
+
+                            elif command[1] == "stop":
+                                yield from client.send_message(message.channel, giveaways.stop(command[2]))
+
+
+                        if command[1] == "enter":
+                            back = giveaways.enter(command[2], message.author.id)
+                            if back != None:
+                                yield from client.send_message(message.channel, back)
 
 
                 elif command[0] in b_Commands:
                     botTalk = yield from client.send_message(message.channel, b_Commands[command[0]][0])
-                    yield from client.delete_message(message)
                     yield from asyncio.sleep(10); yield from client.delete_message(botTalk)
 
 

@@ -1,6 +1,6 @@
-modRoles = ["222359639575101442"] #The id of the mod role(s). Can be found by typing "\@MOD-ROLE-MENTION"
+modRoles = ["222359639575101442","225444761039798272"] #The id of the mod role(s). Can be found by typing "\@MOD-ROLE-MENTION"
 
-backerRoles = ["225042074775322624", "222359639575101442"]
+backerRoles = ["225042074775322624", "225444761039798272"]
 
 forbiddenChannels = ["220502476850200595","222739924313440257"] #Channel id(s) for channels the bot is wanted in. Ids can be found by typing "\#forbidden-channel"
 
@@ -19,7 +19,6 @@ giveawayChannels = ["222739948153995264"]
 
 #The text displayed for !rules
 rulesText = "Please see <#222739924313440257>"
-
 
 specs = """**Hardware & System Specs**:
 Case: Corsair 650D
