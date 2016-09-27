@@ -16,8 +16,6 @@ client = discord.Client()
 with open('token.txt', 'r') as f:
     token = f.read().strip("\n")
 
-pollwebsite = "https://strawpoll.me/api/v2/polls"
-
 b_Commands = {
     'rules': [settings.rulesText],
     'twitter': ['<https://twitter.com/idiotechgaming>'],
@@ -48,11 +46,6 @@ def on_message(message):
         #I use this a lot and I'm lazy.
         messagelower = message.content.lower()
 
-        #checks for trigger words in messages
-        for response in autoresponses.responses:
-            if response in messagelower:
-                yield from client.send_message(message.channel, random.choice(autoresponses.responses[response]))
-
         #checks for trigger words in questions
         if (message.content[-1] == "?" and ("bot" in messagelower or client.user.mentioned_in(message))):
             found = False
@@ -60,11 +53,20 @@ def on_message(message):
                 if response in messagelower:
                     found = True
                     yield from client.send_message(message.channel, random.choice(autoresponses.questionResponses[response]))
+                    break
 
             #If no trigger words yet it is a question for the bot.
             if not found:
                 #Respond with an 8ball answer.
                 yield from client.send_message(message.channel, random.choice(autoresponses.eightBall))
+
+        else:
+            #checks for trigger words in messages
+            for response in autoresponses.responses:
+                if response in messagelower:
+                    yield from client.send_message(message.channel, random.choice(autoresponses.responses[response]))
+                    break
+
 
 
         #Checks for a command
@@ -116,7 +118,7 @@ def on_message(message):
                         # process arguments and sends poll data to strawpoll.me api
                         argString = poll.makeArgString(command)
                         jsondata = poll.processArguments(argString)
-                        strawpoll = requests.post(pollwebsite, json=jsondata)
+                        strawpoll = requests.post(settings.pollwebsite, json=jsondata)
 
                         print(argString)
                         print(jsondata)

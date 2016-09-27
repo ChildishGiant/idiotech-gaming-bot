@@ -56,3 +56,6 @@ helpText = """Here are all the current commands:
 `{0}purge number` - Deletes that many mesages above it.
 
 Arguments with an * after it aren't  needed""".format(operator)
+
+#No idea, devon did this.
+pollwebsite = "https://strawpoll.me/api/v2/polls"

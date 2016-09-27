@@ -14,11 +14,11 @@ Todo:
 *Italics* are simple text commands.
 - [x] Add question handling
 - [x] Add polls
-- [ ] Add giveaways
+- [x] Add giveaways
 - [x] /help
 - [x] */rules*
 - [x] /time
-- [ ] /games
+- [ ] /games **FUCK THIS**
 - [x] */links*
 - [x] */specs*
 - [x] */youtube*
