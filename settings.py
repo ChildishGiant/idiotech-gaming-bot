@@ -40,18 +40,20 @@ links = """<https://www.youtube.com/idiotechgaming>
 <https://www.reddit.com/r/idiotechgaming/>"""
 
 helpText = """Here are all the current commands:
-`{0}time place*` Says the time in several timezones or the one supplied
-`{0}joke` Tells you a joke
-`{0}roll sides*` Rolls a die with the amount of sides you ask for. Default is 6
-`{0}youtube` Shows Idiotech's latest video
+`{0}time place*` - Says the time in several timezones or the one supplied
+`{0}joke` - Tells you a joke
+`{0}roll sides*` - Rolls a die with the amount of sides you ask for. Default is 6
+`{0}youtube` - Shows Idiotech's latest video
+`{0}games` - Lists the next 10 games to be released that Idiotech has his eyes on.
 
 **Backer only commands**
 `{0}burn` - Sick burn, bro!
+`{0}fight @username` - Fight your foes *with spam*.
+`{0}hug @username` - Show your afffection for someone.
 
 **Mod only commands**
 `{0}giveaway start Giveaway-Name` - Starts a giveaway with the supplied name
 `{0}giveaway stop` - Stops the current giveaway
-`{0}bullygiant` - It bullys giant ... duh.
 `{0}poll title; option 1; option 2`\nYou can set up to 10 options`
 `{0}purge number` - Deletes that many mesages above it.
 

@@ -1,7 +1,7 @@
 import discord, asyncio, logging, random, time, requests, json, math
 
 import settings, autoresponses
-from commands import __time, joke, youtube, __help, roll, bullyGiant, poll, fight, giveaways, burn
+from commands import __time, joke, youtube, __help, roll, poll, fight, giveaways, burn, games
 
 logger = logging.getLogger('discord')
 logger.setLevel(logging.DEBUG)
@@ -104,9 +104,6 @@ def on_message(message):
                     except IndexError:
                         yield from client.send_message(message.channel, __help.purgeHelp.helpText)
 
-                elif command[0] == __help.bullyGiantHelp.call:
-                    yield from client.change_nickname(message.server.get_member(bullyGiant.giantId), bullyGiant.gen(message))
-
                 #Poll
                 elif command[0] == __help.pollHelp.call:
 
@@ -127,11 +124,11 @@ def on_message(message):
 
             #backer commands
             if isBacker:
-                if command[0] == __help.hug.call:
+                if command[0] == __help.hugHelp.call:
                     try:
                         botTalk = yield from client.send_message(message.channel, str(message.author.mention) + " :heart: " + str(command[1]))
                     except IndexError:
-                        botTalk = yield from client.send_message(message.channel, __help.hug.helpText)
+                        botTalk = yield from client.send_message(message.channel, __help.hugHelp.helpText)
 
                     yield from asyncio.sleep(10)
                     yield from client.delete_message(botTalk)
@@ -142,7 +139,7 @@ def on_message(message):
                 if command[0] == "fight":
 
                     if len(command) < 2 or len(command) > 3:
-                        botTalk = yield from client.send_message(message.channel, "Get your arguments straight, you fuck head :crossed_swords: ")
+                        botTalk = yield from client.send_message(message.channel, "Get your arguments straight, you fuck head :crossed_swords:")
 
                     else:
                         player1, player2 = 100, 100
@@ -186,6 +183,10 @@ def on_message(message):
 
                 elif command[0] == __help.jokeHelp.call:
                     yield from client.send_message(message.channel, joke.getJoke())
+
+                elif command[0] == __help.gamesHelp.call:
+                    botTalk = yield from client.send_message(message.channel, games.fetchLatest())
+                    yield from asyncio.sleep(10); yield from client.delete_message(botTalk)
 
                 elif command[0] == __help.youtubeHelp.call:
                     botTalk = yield from client.send_message(message.channel, youtube._youtube())

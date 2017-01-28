@@ -18,7 +18,7 @@ Todo:
 - [x] /help
 - [x] */rules*
 - [x] /time
-- [ ] /games **FUCK THIS**
+- [x] /games
 - [x] */links*
 - [x] */specs*
 - [x] */youtube*

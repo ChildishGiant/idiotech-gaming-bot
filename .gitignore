@@ -1,6 +1,8 @@
 /token.txt
 /youtubeToken.txt
+/lazyiotech.py
 /oldBot/*
 /*.log
+/special copy/*
 /__pycache__/*
 /commands/__pycache__/*
