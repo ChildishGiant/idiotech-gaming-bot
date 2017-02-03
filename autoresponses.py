@@ -6,6 +6,8 @@ responses = {
     "bye" or "cya" or "seeya" or "farewell": ["Bye!","Goodbye!","Take Care!","Have Fun!","Farewell!","GLHF!",":punch:"],
     "ping" : ["Buzz!","Boom!","Clang!","Bang!","Pong!","Ping!","Beep!","Boop!","Rebooting..."],
     "toaster" : ["I am not a toaster","I do not produce toast","I do not specialise in baked goods","I am not a kitchen appliance","I do not assist with food preparation"],
+    "bread" : ["Bread is the basis of civilization","Bread for the Bread Lord",":breadlord:"],
+    "witcher" : ["Go play the Witcher 3 god dammit"]
 }
 
 #responses for questions containing the key word

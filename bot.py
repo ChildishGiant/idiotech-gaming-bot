@@ -117,9 +117,6 @@ def on_message(message):
                         jsondata = poll.processArguments(argString)
                         strawpoll = requests.post(settings.pollwebsite, json=jsondata)
 
-                        print(argString)
-                        print(jsondata)
-
                         botTalk = yield from client.send_message(message.channel, "Poll sucessfully created\nLink: http://www.strawpoll.me/{0}".format(strawpoll.json()['id']))
 
             #backer commands
@@ -150,7 +147,6 @@ def on_message(message):
                             player1 -= math.ceil(damage1)
                             player2 -= math.ceil(damage2)
                             botTalk = yield from client.send_message(message.channel, "{0} :crossed_swords: {1}\n{0} has taken {2} damage\n{1} has taken {3} damage".format(str(message.author.mention), str(command[1]), damage1, damage2))
-                            print(player1, player2)
                             yield from asyncio.sleep(4)
                             yield from client.delete_message(botTalk)
 
