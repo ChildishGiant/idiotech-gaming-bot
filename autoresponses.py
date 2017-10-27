@@ -12,7 +12,7 @@ responses = {
 
 #responses for questions containing the key word
 questionResponses = {
-    "idiotech" : ["~~Idiotech~~ SolarPolarMan created me","Idiotech is the Omnissiah","Idiotech is my master","Idiotech is a benevolent ruler","Idiotech requires your money"],
+    "idiotech" : ["~~Idiotech~~ ChildishGiant created me","Idiotech is the Omnissiah","Idiotech is my master","Idiotech is a benevolent ruler","Idiotech requires your money"],
     "master" : ["Idiotech is my master"],
     "age" or "old" or "young" or "baby" : ["I have no age","I am infinite"],
     "food" : ["I like pie!","I like cake!","I like chocolate!","I like ice cream!","I like bacon!","I do not require sustenance!"],
